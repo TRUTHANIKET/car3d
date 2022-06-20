@@ -62,6 +62,7 @@ flutter:
   # assets:
   assets:
     - assets/
+    - pics/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
@@ -84,6 +85,9 @@ flutter:
     - family: Satisfy
       fonts:
         - asset: fonts/Satisfy-Regular.ttf
+    - family: quicky
+      fonts:
+        - asset: fonts/Quicksand-Regular.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

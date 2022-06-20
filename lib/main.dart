@@ -1,6 +1,7 @@
+import 'package:car3d/carswipe.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:imageview360/imageview360.dart';
+
 
 
 
@@ -10,176 +11,140 @@ void main() {
     DeviceOrientation.portraitUp,
   ]);
   runApp(MaterialApp(
-    home:DetailScreen(),
+    home:paged(),
     debugShowCheckedModeBanner: false,
   ));
 }
 
-class paged extends StatelessWidget {
+class paged extends StatefulWidget {
   const paged({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-
-
-    );
-  }
+  State<paged> createState() => _pagedState();
 }
 
-
-
-
-
-
-class DetailScreen extends StatefulWidget {
-  const DetailScreen({Key? key}) : super(key: key);
-
-  @override
-  _DashboardScreenState createState() => _DashboardScreenState();
-}
-
-class _DashboardScreenState extends State<DetailScreen> {
-
-  List<ImageProvider> imageList = <ImageProvider>[];
-  bool autoRotate = false;
-  int rotationCount = 102;
-  int swipeSensitivity = 2;
-  bool allowSwipeToRotate = true;
-  bool imagePrecached = true;
-
-  @override
-  void initState() {
-    super.initState();
-    updateImageList(context);
-  }
-
-  void updateImageList(BuildContext context) {
-    for (int i = 1; i <= 102; i++) {
-      imageList.add(AssetImage('assets/$i.png'));
-    }
-  }
-
-
-
+class _pagedState extends State<paged> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
+    body: Container(
+      child: Column(
+        children: [
+          Container( height: 180,
 
-      body: SingleChildScrollView(
-        child: Container(
+          decoration: BoxDecoration(
 
-          color: Colors.white,
-          child: Column(
-            children: [
-              SizedBox(height:60 ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
 
-                child:  ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: ImageView360(
-                    key: UniqueKey(),
-                    imageList: imageList,
-                    autoRotate: autoRotate,
-                    rotationCount: rotationCount,
-                    swipeSensitivity: swipeSensitivity,
-                    allowSwipeToRotate: allowSwipeToRotate,
-                    onImageIndexChanged: (currentImageIndex) {
-                      print("currentImageIndex: $currentImageIndex");
-                    },
+
+          ),
+          child: SafeArea(
+            child: Stack(
+
+              children: [
+                Positioned(
+
+                top: 15,
+                  left: 25,
+                  child: Container(
+
+                    child: Text('Hello',
+                    style: TextStyle(
+                      fontFamily: 'Nunito',
+                     
+                    ),),
                   ),
                 ),
-              ),
-              Container(
-                height: 200,
+                Positioned(
 
-                child:Stack(
-                  children: [
+                  top: 30,
+                  left: 25,
+                  child: Container(
 
-                    Positioned(
-                      top: 20,
-                      left: 50,
-                      child: Container(
+                    child: Text('Aniket',
+                      style: TextStyle(
+                          fontFamily: 'quicky',
 
-                        child: Text(
-                            'Audi R8 GT',
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontFamily: 'Nunito'
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 50,
-                      left: 55,
-                      child: Container(
+                        fontSize: 25
 
-                        child: Text(
-                          'Fastest and coolest',
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontFamily: 'Nunito'
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top:120,
-                      left: 55,
-                      child: Container(
-
-                        child: Text(
-                          'Price :',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: 'Nunito'
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top:120,
-                      left: 115,
-                      child: Container(
-
-                        child: Text(
-                          '₹2.30 Crore',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: 'Nunito'
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                      ),),
+                  ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 30),
-                alignment: Alignment.center,
-                child: Column(
-                  children: [
 
-
-
-                  ],
-                ),
-              ),
-              //
-
-
-
-            ],
+              ],
+            ),
           ),
-        ),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+          child: GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailScreen(), ),);
+            },
+            child: Stack(
+              children: [
+                Container(
+
+                  height: 250,
+
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        spreadRadius: 1,
+                        blurRadius: 4,
+                        offset: Offset(1,2),
+                      )
+                    ],
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                
+                Container(
+                  
+                  alignment: Alignment.center,
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20)
+
+                      ,
+
+                      child: Hero(
+                        tag: 'audia8',
+                          child: Image.asset('pics/aage.png',height: 200,))),
+
+                ),
+                Positioned(
+
+                  top: 210,
+                  left:140,
+                  right: 0,
+                  child: Container(
+
+                    child: Text('AUDI A8',
+                      style: TextStyle(
+                          fontFamily: 'quicky',
+
+                          fontSize: 25
+
+                      ),),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          ),
+        ],
       ),
+    ),
+
     );
   }
 }
+
+
+
+
+
 
 
 

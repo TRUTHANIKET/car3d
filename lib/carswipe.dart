@@ -48,6 +48,7 @@ class _DashboardScreenState extends State<DetailScreen> {
   bool allowSwipeToRotate = true;
   bool imagePrecached = true;
 
+
   @override
   void initState() {
     super.initState();
@@ -66,121 +67,230 @@ class _DashboardScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        centerTitle: true,
+      backgroundColor: Colors.white,
 
-        backgroundColor: Colors.white,
-        elevation: 0,
-        actions: [Image.asset("assets/ic_search.png")],
-      ),
       body: SingleChildScrollView(
         child: Container(
+
           color: Colors.white,
           child: Column(
             children: [
-              Container(
-                height: size.width - 30,
-                child: Stack(
+            SafeArea(
+              child: Container(
+                child: Text('PIC\'s', style:
+                  TextStyle(
+                    fontSize: 25,
+                    fontFamily: 'Nunito'
+                  ),),
+
+              ),
+            ),
+
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+
+              child: Container(
+
+                alignment: Alignment.center,
+
+                child: Row(
                   children: [
-                    Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 70),
-                          child: Image.asset("assets/ring.png"),
-                        )),
-                    ImageView360(
-                      key: UniqueKey(),
-                      imageList: imageList,
-                      autoRotate: autoRotate,
-                      rotationCount: rotationCount,
-                      swipeSensitivity: swipeSensitivity,
-                      allowSwipeToRotate: allowSwipeToRotate,
-                      onImageIndexChanged: (currentImageIndex) {
-                        print("currentImageIndex: $currentImageIndex");
-                      },
+
+
+                    SafeArea(
+                      child: Hero(
+                        tag: 'audia8',
+
+                          child: Container(
+                            child:ClipRRect(
+
+                                child: Image.asset('pics/aage.png',height: 210,)) ,
+                          ),
+
+                      ),
+                    ),
+
+                    SafeArea(
+
+
+
+                          child: Container(
+                            child:ClipRRect(
+
+                                child: Image.asset('pics/audi.png',height: 210,)) ,
+                          ),
+
+
+                    ),
+                    SafeArea(
+
+
+
+                        child: Container(
+                          child:ClipRRect(
+
+                              child: Image.asset('pics/side.png',height: 210,)) ,
+
+                      ),
+
+                    ),
+                    SafeArea(
+
+
+
+                        child: Container(
+                          child:ClipRRect(
+
+                              child: Image.asset('pics/thodafront.png',height: 210,)) ,
+
+                      ),
+
+                    ),
+
+
+
+
+
+                  ],
+                ),
+
+              ),
+
+            ),
+
+
+              SizedBox(height:60 ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+
+                child:  ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: ImageView360(
+                    key: UniqueKey(),
+                    imageList: imageList,
+                    autoRotate: autoRotate,
+                    rotationCount: rotationCount,
+                    swipeSensitivity: swipeSensitivity,
+                    allowSwipeToRotate: allowSwipeToRotate,
+                    rotationDirection: RotationDirection.anticlockwise,
+                    onImageIndexChanged: (currentImageIndex) {
+
+                    },
+                  ),
+                ),
+              ),
+              Container(
+                height: 200,
+
+                child:Stack(
+                  children: [
+
+                    Positioned(
+                      top: 20,
+                      left: 50,
+                      child: Container(
+
+                        child: Text(
+                          'Audi R8 GT',
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: 'Nunito'
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 50,
+                      left: 55,
+                      child: Container(
+
+                        child: Text(
+                          'Fastest and coolest',
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'Nunito'
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top:80,
+                      left: 55,
+                      child: Container(
+
+                        child: Text(
+                          'Price :',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'Nunito'
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top:80,
+                      left: 115,
+                      child: Container(
+
+                        child: Text(
+                          '₹2.30 Crore',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'Nunito'
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
               ),
               Container(
-                  width: size.width,
-                  decoration: new BoxDecoration(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
 
-                      borderRadius: new BorderRadius.only(
-                        topLeft: const Radius.circular(40.0),
-                        topRight: const Radius.circular(40.0),
-                      )
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RichText(
-                          textAlign: TextAlign.start,
-                          text: const TextSpan(
-                              text: "Nike Air Max Pre-Day",
-                              style: TextStyle(
-                                  color: Colors.black87,
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                        SizedBox(height: 10,),
-                        Row(
-                          children: [
-                            Icon(Icons.star, color: Colors.amber,),
-                            RichText(
-                              textAlign: TextAlign.start,
-                              text: const TextSpan(
-                                  text: "5.0",
-                                  style: TextStyle(
-                                    color: Colors.black54,
-                                    fontSize: 16.0,)),
-                            ),
-                            SizedBox(width: 5,),
-                            RichText(
-                              textAlign: TextAlign.start,
-                              text: const TextSpan(
-                                  text: "(1125 Review)",
-                                  style: TextStyle(
-                                    color: Colors.black45,
-                                    fontSize: 16.0,)),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 10,),
-                        RichText(
-                          textAlign: TextAlign.start,
-                          text: const TextSpan(
-                              text: "Men's sneakers are made with leather upper features for durability and support, while perforations provide airflow during every shoe wear.",
-                              style: TextStyle(
-                                color: Colors.black45,
-                                fontSize: 16.0,)),
-                        ),
-                        SizedBox(height: 10,),
-                        RichText(
-                          textAlign: TextAlign.start,
-                          text: const TextSpan(
-                              text: "Select Color :",
-                              style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 20.0,)),
-                        ),
-                        SizedBox(
-                          height: 80,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
 
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
+
+                  ],
+                ),
               ),
+
+
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 50,vertical: 50),
+                child: Stack(
+                  children: [
+
+                    Container(
+
+                      height:70,
+                      decoration: BoxDecoration(
+                    color: Colors.black,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    Positioned(
+                      top: 25,
+                      left: 106,
+                      child: Container(
+                        
+                         child: Text('BOOK NOW',
+                         style: TextStyle(
+                           fontSize: 15,
+                           fontFamily: 'Nunito',
+                           color: Colors.white
+                         ),),
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+              //
+
+
+
             ],
           ),
         ),
