@@ -1,16 +1,12 @@
-# car3d
+Made by aniket singh 
+the model was first made in blender and then a 360 rotation animation was made in blender then i just added that to after effects and 
+used the png sequence export method then
+just using flutter LOL
+<3
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![image](https://user-images.githubusercontent.com/100013837/175820378-880c6526-e3a1-47e4-bd94-8c6930e50f3c.png)
